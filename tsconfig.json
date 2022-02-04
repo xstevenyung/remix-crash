@@ -13,8 +13,10 @@
     "moduleResolution": "Node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "declaration": true,
+    "outDir": "dist",
+    "emitDeclarationOnly": true
   },
-  "include": ["./src", "vite.config.ts"]
+  "include": ["./src/index.ts", "./src/vite-env.d.ts"]
 }

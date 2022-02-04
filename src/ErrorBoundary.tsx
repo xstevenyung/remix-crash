@@ -23,13 +23,25 @@ export type SanitizedStacktrace = Array<{
 } | null>;
 
 export type ErrorState = {
+  loading: boolean;
   stacktrace: Stacktrace;
   sanitizedStacktrace: SanitizedStacktrace;
+  convertedStacktrace: Array<{
+    file: string;
+    sourceContent: string;
+    line: number;
+  }>;
+  selectedIndex: number | null;
+  setSelectedIndex: (value: number | null) => void;
 };
 
 export const defaultErrorState: ErrorState = {
   stacktrace: [],
   sanitizedStacktrace: [],
+  loading: true,
+  convertedStacktrace: [],
+  setSelectedIndex: () => {},
+  selectedIndex: null,
 };
 
 export const ErrorContext = createContext(defaultErrorState);
@@ -249,7 +261,8 @@ const CodeFrame = () => {
   const { convertedStacktrace, selectedIndex } = useError();
   // const selectedLine = useRef(null)
 
-  const convertedStacktraceLine = convertedStacktrace[selectedIndex];
+  const convertedStacktraceLine =
+    selectedIndex !== null ? convertedStacktrace[selectedIndex] : null;
 
   useLayoutEffect(() => {
     document.querySelector(".selected")?.scrollIntoView({ block: "center" });
