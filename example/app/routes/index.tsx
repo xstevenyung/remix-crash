@@ -1,7 +1,7 @@
 import type { LoaderFunction } from "remix";
 
 export const loader: LoaderFunction = () => {
-  user.test();
+  hello.remix();
   return null;
 };
 
