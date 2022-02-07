@@ -28,6 +28,9 @@ jobs:
 
       - name: Only run install on root package
         run: pnpm install --filter remix-crash
+
+      - run: pnpx remix setup
+
       - run: pnpm run build
 
       - run: npm publish
