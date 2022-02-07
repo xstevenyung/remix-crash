@@ -7,7 +7,7 @@ import {
   useMemo,
   useState,
 } from "react";
-import { Links, LiveReload, Scripts, ScrollRestoration } from "remix";
+import { Links, LiveReload, Meta, Scripts, ScrollRestoration } from "remix";
 import codeStyles from "highlight.js/styles/github-dark.css";
 // @ts-ignore
 import styleInject from "style-inject";
@@ -140,6 +140,54 @@ export const useError = () => {
 export function ErrorBoundary({ error }: { error: Error }) {
   console.error(error);
 
+  if (process.env.NODE_ENV !== "development") {
+    return <ProdErrorBoundary error={error} />;
+  }
+
+  return <DevErrorBoundary error={error} />;
+}
+
+export function ProdErrorBoundary({ error }: { error: Error }) {
+  return (
+    <html lang="en">
+      <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <Meta />
+        <Links />
+      </head>
+
+      <body>
+        <main
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            width: "100vw",
+            height: "100vh",
+            gap: "1rem",
+          }}
+        >
+          <h1>500</h1>
+          <span
+            style={{
+              height: "2.5rem",
+              width: "2px",
+              backgroundColor: "rgb(75, 85, 99)",
+            }}
+          />
+          <span>Internal Server Error.</span>
+        </main>
+
+        <ScrollRestoration />
+
+        <Scripts />
+      </body>
+    </html>
+  );
+}
+
+export function DevErrorBoundary({ error }: { error: Error }) {
   useLayoutEffect(() => {
     styleInject(styles);
     styleInject(codeStyles);
@@ -160,7 +208,6 @@ export function ErrorBoundary({ error }: { error: Error }) {
         <title>{`💥 ${type}: ${message}`}</title>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
-        {/* <link rel="stylesheet" href={codeStyles} /> */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
@@ -171,7 +218,6 @@ export function ErrorBoundary({ error }: { error: Error }) {
           href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
           rel="stylesheet"
         />
-        <Links />
       </head>
 
       <body

@@ -2,7 +2,7 @@ import { ActionFunction, LoaderFunction, json } from "remix";
 import { SourceMapConsumer } from "source-map";
 import { CORSResponse } from "./utils";
 
-export const loader: LoaderFunction = async ({ request }) => {
+export const loader: LoaderFunction = () => {
   if (process.env.NODE_ENV !== "development") {
     throw new Response(null, { status: 404 });
   }
@@ -11,6 +11,10 @@ export const loader: LoaderFunction = async ({ request }) => {
 };
 
 export const action: ActionFunction = async ({ request }) => {
+  if (process.env.NODE_ENV !== "development") {
+    throw new Response(null, { status: 404 });
+  }
+
   const { readFile } = await import("fs/promises");
 
   const url = new URL(request.url);
