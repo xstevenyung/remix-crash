@@ -157,7 +157,12 @@ export function ProdErrorBoundary({ error }: { error: Error }) {
         <Links />
       </head>
 
-      <body>
+      <body
+        style={{
+          fontFamily:
+            "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
+        }}
+      >
         <main
           style={{
             display: "flex",
