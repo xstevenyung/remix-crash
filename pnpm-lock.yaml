@@ -41,7 +41,7 @@ importers:
       typescript: 4.5.5
       vite: 2.7.13
 
-  example:
+  examples/latest:
     specifiers:
       '@remix-run/dev': ^1.1.3
       '@remix-run/react': ^1.1.3
@@ -55,7 +55,32 @@ importers:
       '@remix-run/react': 1.1.3_react-dom@17.0.2+react@17.0.2
       '@remix-run/serve': 1.1.3_react-dom@17.0.2+react@17.0.2
       remix: 1.1.3
-      remix-crash: link:..
+      remix-crash: link:../..
+    devDependencies:
+      '@remix-run/dev': 1.1.3
+      '@types/react': 17.0.39
+      '@types/react-dom': 17.0.11
+      typescript: 4.5.5
+
+  examples/v1.0.5:
+    specifiers:
+      '@remix-run/dev': ^1.0.5
+      '@remix-run/react': ^1.0.5
+      '@remix-run/vercel': ^1.0.5
+      '@types/react': ^17.0.24
+      '@types/react-dom': ^17.0.9
+      react: ^17.0.2
+      react-dom: ^17.0.2
+      remix: ^1.0.5
+      remix-crash: workspace:^0.1.1
+      typescript: ^4.1.2
+    dependencies:
+      '@remix-run/react': 1.1.3_react-dom@17.0.2+react@17.0.2
+      '@remix-run/vercel': 1.1.3_react-dom@17.0.2+react@17.0.2
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+      remix: 1.1.3
+      remix-crash: link:../..
     devDependencies:
       '@remix-run/dev': 1.1.3
       '@types/react': 17.0.39
@@ -394,7 +419,7 @@ packages:
     dev: true
 
   /@remix-run/dev/1.1.3:
-    resolution: {integrity: sha512-VW2mWmK1r7aOVpPERvQe81tOk5LA5+NoE8s8xfNPkqcjFob3wpKN/EV+wP5f2mpczRg2RfyG2DlFEArIniY9qA==}
+    resolution: {integrity: sha512-wp54mTuJSKtYyDjWXbpmDb29SIm6G6d0V41WxymOLmXXHnwik7/i7aON6fJegnNDP5Z/k7PjGj2oSxev4e7sSw==, tarball: download/@remix-run/dev/1.1.3/13d23be3b6ed97e4845cc255e1a935ad78e08778a3c3d039bebb3e0dc7db2cae}
     hasBin: true
     dependencies:
       cacache: 15.3.0
@@ -404,7 +429,7 @@ packages:
       fs-extra: 10.0.0
       lodash.debounce: 4.0.8
       meow: 7.1.1
-      minimatch: 3.0.4
+      minimatch: 3.0.5
       pretty-ms: 7.0.1
       read-package-json-fast: 2.0.3
       remark-frontmatter: 4.0.1
@@ -418,7 +443,7 @@ packages:
     dev: true
 
   /@remix-run/express/1.1.3_c249933f376ca18b25ea8a9b07171fbd:
-    resolution: {integrity: sha512-lNwnxWNSHGVzeSAtEx0KIOjznOcOPD9cmLZYiCWYdY1Wl+PVRxEsYW5O2XMBg4E3kDR9Tfh4S6H9/5EZkY0sFg==}
+    resolution: {integrity: sha512-do8apDeGZrZ0LxHm0B6Ofwyc98ogXQ+mYZ5nrchq921rkDjNk92fsaJDSOvQulAQFW8oBld98oJ2ZfMFZ4bQ1w==, tarball: download/@remix-run/express/1.1.3/536f98f623d5f56eae973cbb44620d3093c8045149378ede3c0654c88547dfb4}
     peerDependencies:
       express: ^4.17.1
     dependencies:
@@ -432,7 +457,7 @@ packages:
     dev: false
 
   /@remix-run/node/1.1.3_react-dom@17.0.2+react@17.0.2:
-    resolution: {integrity: sha512-eU08JGsP7dAS8ucUO6E76SIEGroEhAJJbBij6AKm7CQnyx4bNwvX3PYdEqUhzehhx+uBB/QjeWqmRYevilMYgQ==}
+    resolution: {integrity: sha512-U6ZhE8G/hyFMu+SSGk35KVwXhjhHKLm4PQM5autmnuvN+tHaq/8sdFRrn1ERHEBP4GA1dT5KgYzW42d4lmPKQg==, tarball: download/@remix-run/node/1.1.3/0fdc7e058c62508b63665b3c1b6fc21ee5c9ac00afef63b773e410337c8f6cf4}
     dependencies:
       '@remix-run/server-runtime': 1.1.3_react-dom@17.0.2+react@17.0.2
       '@types/busboy': 0.3.2
@@ -452,7 +477,7 @@ packages:
     dev: false
 
   /@remix-run/react/1.1.3_react-dom@17.0.2+react@17.0.2:
-    resolution: {integrity: sha512-1vYwRi4qQGJLByZR15o47TRZ3/xT3+vhM97UCPJPu4GtzbPldNYLuQlVmAzWWjGuQmSqmwWv818U/+U7rke18g==}
+    resolution: {integrity: sha512-MWJoZ8qrMcSL2L0y5DsKxYFmXTGBCWmcxOFtp7DXEwcl/c7RDZZyUZAM37InWxjVu9MR/0GWsmDKm543U6FBDA==, tarball: download/@remix-run/react/1.1.3/adcd16a7f9a0961510a1132c3223efa13a86808f63bf43ac6ee6e01449998cbe}
     peerDependencies:
       react: '>=16.8'
       react-dom: '>=16.8'
@@ -463,7 +488,7 @@ packages:
     dev: false
 
   /@remix-run/serve/1.1.3_react-dom@17.0.2+react@17.0.2:
-    resolution: {integrity: sha512-fPvVzMXhOnGmKarhdhSxI0iXXfB3g1Fh3+IpV5IT0WpRyU+3dQ8y9wPZXbdUJhDAFIXz8V+Qn8yVIYOFAlEqaQ==}
+    resolution: {integrity: sha512-hgcAR+Zw9Dz3aewMfUsUQLqwck6C7JpcRgJqoiVjNVxU2FBcbiycKdWjKQhmUsexZ1ajI3ny8v2sjRowwWRnsQ==, tarball: download/@remix-run/serve/1.1.3/cf1ec3abc5b571eed30663aa9899544b808d80fef0ac6987d75ab6ada9d88876}
     hasBin: true
     dependencies:
       '@remix-run/express': 1.1.3_c249933f376ca18b25ea8a9b07171fbd
@@ -477,7 +502,7 @@ packages:
     dev: false
 
   /@remix-run/server-runtime/1.1.3_react-dom@17.0.2+react@17.0.2:
-    resolution: {integrity: sha512-Gpl57d42CVqx1gDD+kjjUx7PZqjZgw4i1TWpH37AqOCCBTrNBb2lcl2D0oAZ2ot+wLOT9rDbvIU74GzayDUalw==}
+    resolution: {integrity: sha512-CCqWwiwUW6pSkUzmM/JeI8PRcVjHpZqpAYknnJriy6vOg93W1zUqp/XuaxdzoWhdOg+eoRuw9MVWIioAiJPzzw==, tarball: download/@remix-run/server-runtime/1.1.3/1e22b593e52417fdad1603667908fec6013625d4065d077bad5d78dc46d5a86c}
     peerDependencies:
       react: '>=16.8'
       react-dom: '>=16.8'
@@ -490,6 +515,19 @@ packages:
       react-router-dom: 6.2.1_react-dom@17.0.2+react@17.0.2
       set-cookie-parser: 2.4.8
       source-map: 0.7.3
+    dev: false
+
+  /@remix-run/vercel/1.1.3_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-eEHmC/nvmdgm87dQ+rs1y+I0yMp4i/iHvVAn7BDvbft5O/BuASHpKL//7HF1uQIGEd3RnGYeafsfhQ71En4QKg==, tarball: download/@remix-run/vercel/1.1.3/485c1d107f96a092dd0c93815335e7f0febf2663da1d3121c1aebdfab100b429}
+    peerDependencies:
+      '@vercel/node': ^1.8.3
+    dependencies:
+      '@remix-run/node': 1.1.3_react-dom@17.0.2+react@17.0.2
+      '@remix-run/server-runtime': 1.1.3_react-dom@17.0.2+react@17.0.2
+    transitivePeerDependencies:
+      - encoding
+      - react
+      - react-dom
     dev: false
 
   /@rollup/pluginutils/4.1.2:
@@ -515,7 +553,7 @@ packages:
   /@types/acorn/4.0.6:
     resolution: {integrity: sha512-veQTnWP+1D/xbxVrPC3zHnCZRjSrKfhbMUlEA43iMZLu7EsnTtkJklIuwrCPbOi8YkvDQAiW05VQQFvvz9oieQ==}
     dependencies:
-      '@types/estree': 0.0.50
+      '@types/estree': 0.0.51
     dev: true
 
   /@types/babel__core/7.1.18:
@@ -575,7 +613,7 @@ packages:
   /@types/estree-jsx/0.0.1:
     resolution: {integrity: sha512-gcLAYiMfQklDCPjQegGn0TBAn9it05ISEsEhlKQUddIk7o2XDokOcTN7HBO8tznM0D9dGezvHEfRZBfZf6me0A==}
     dependencies:
-      '@types/estree': 0.0.50
+      '@types/estree': 0.0.51
     dev: true
 
   /@types/estree/0.0.46:
@@ -584,6 +622,10 @@ packages:
 
   /@types/estree/0.0.50:
     resolution: {integrity: sha512-C6N5s2ZFtuZRj54k2/zyRhNDjJwwcViAM3Nbm8zjBpbqAdZ00mr0CFxvSKeO8Y/e03WVFLpQMdHYVfUd6SB+Hw==}
+    dev: true
+
+  /@types/estree/0.0.51:
+    resolution: {integrity: sha512-CuPgU6f3eT/XgKKPqKd/gLZV1Xmvf1a2R5POBOGQa6uv82xpls89HU5zKeVoyR8XzHd1RGNOlQlvUe3CFkjWNQ==}
     dev: true
 
   /@types/hast/2.3.4:
@@ -949,7 +991,7 @@ packages:
       '@npmcli/move-file': 1.1.2
       chownr: 2.0.0
       fs-minipass: 2.1.0
-      glob: 7.1.6
+      glob: 7.2.0
       infer-owner: 1.0.4
       lru-cache: 6.0.0
       minipass: 3.1.6
@@ -977,7 +1019,7 @@ packages:
       clone-response: 1.0.2
       get-stream: 5.2.0
       http-cache-semantics: 4.1.0
-      keyv: 4.1.0
+      keyv: 4.1.1
       lowercase-keys: 2.0.0
       normalize-url: 6.1.0
       responselike: 2.0.0
@@ -2024,13 +2066,13 @@ packages:
       is-glob: 4.0.3
     dev: true
 
-  /glob/7.1.6:
-    resolution: {integrity: sha512-LwaxwyZ72Lk7vZINtNNrywX0ZuLyStrdDtabefZKAY5ZGJhVtgdznluResxNmPitE0SAO+O26sWTHeKSI2wMBA==}
+  /glob/7.2.0:
+    resolution: {integrity: sha512-lmLf6gtyrPq8tTjSmrO94wBeQbFR3HbLHbuyD69wuyQkImp2hWqMGB47OX65FBkPffO641IP9jWa1z4ivqG26Q==}
     dependencies:
       fs.realpath: 1.0.0
       inflight: 1.0.6
       inherits: 2.0.4
-      minimatch: 3.0.4
+      minimatch: 3.0.5
       once: 1.4.0
       path-is-absolute: 1.0.1
     dev: true
@@ -2351,7 +2393,7 @@ packages:
   /is-reference/3.0.0:
     resolution: {integrity: sha512-Eo1W3wUoHWoCoVM4GVl/a+K0IgiqE5aIo4kJABFyMum1ZORlPkC+UC357sSQUL5w5QCE5kCC9upl75b7+7CY/Q==}
     dependencies:
-      '@types/estree': 0.0.50
+      '@types/estree': 0.0.51
     dev: true
 
   /is-regex/1.1.4:
@@ -2399,7 +2441,6 @@ packages:
 
   /js-tokens/4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
-    dev: true
 
   /js-yaml/4.1.0:
     resolution: {integrity: sha512-wpxZs9NoxZaJESJGIZTyDEaYpl0FKSA+FB9aJiyemKhMwkxQg63h4T1KJgUGHpTqPDNRcmmYLugrRjJlBtWvRA==}
@@ -2443,8 +2484,8 @@ packages:
     optionalDependencies:
       graceful-fs: 4.2.9
 
-  /keyv/4.1.0:
-    resolution: {integrity: sha512-YsY3wr6HabE11/sscee+3nZ03XjvkrPWGouAmJFBdZoK92wiOlJCzI5/sDEIKdJhdhHO144ei45U9gXfbu14Uw==}
+  /keyv/4.1.1:
+    resolution: {integrity: sha512-tGv1yP6snQVDSM4X6yxrv2zzq/EvpW+oYiUz6aueW1u9CtS8RzUQYxxmFwgZlO2jSgCxQbchhxaqXXp2hnKGpQ==}
     dependencies:
       json-buffer: 3.0.1
     dev: true
@@ -2501,7 +2542,6 @@ packages:
     hasBin: true
     dependencies:
       js-tokens: 4.0.0
-    dev: true
 
   /lowercase-keys/2.0.0:
     resolution: {integrity: sha512-tqNXrS78oMOE73NMxK4EMLQsQowWf8jKooH9g7xPavRT706R6bkQJ6DY2Te7QukaZsulxa30wQ7bk0pm4XiHmA==}
@@ -2987,8 +3027,8 @@ packages:
     engines: {node: '>=4'}
     dev: true
 
-  /minimatch/3.0.4:
-    resolution: {integrity: sha512-yJHVQEhyqPLUTgt9B83PXu6W3rx4MvvHvSUvToogpwoGDOUQ+yDrR0HRot+yOCdCO7u4hX3pWft6kWBBcqh0UA==}
+  /minimatch/3.0.5:
+    resolution: {integrity: sha512-tUpxzX0VAzJHjLu0xUfFv1gwVp9ba3IOuRAVH2EGuRW8a5emA2FlACLqiT/lDVtS1W+TGNwqz3sWaNyLgDJWuw==}
     dependencies:
       brace-expansion: 1.1.11
     dev: true
@@ -3139,7 +3179,6 @@ packages:
   /object-assign/4.1.1:
     resolution: {integrity: sha1-IQmtx5ZYh8/AXLvUQsrIv7s2CGM=}
     engines: {node: '>=0.10.0'}
-    dev: true
 
   /object-hash/2.2.0:
     resolution: {integrity: sha512-gScRMn0bS5fH+IuwyIFgnh9zBdo4DV+6GhygmWM9HyNJSgS0hScp1f5vjtm7oIIOiT9trXrShAkLFSc2IqKNgw==}
@@ -3420,7 +3459,6 @@ packages:
       object-assign: 4.1.1
       react: 17.0.2
       scheduler: 0.20.2
-    dev: true
 
   /react-refresh/0.11.0:
     resolution: {integrity: sha512-F27qZr8uUqwhWZboondsPx8tnC3Ct3SxZA3V5WyEvujRyyNv0VYPhoBg1gZ8/MV5tubQp76Trw8lTv9hzRBa+A==}
@@ -3454,7 +3492,6 @@ packages:
     dependencies:
       loose-envify: 1.4.0
       object-assign: 4.1.1
-    dev: true
 
   /read-package-json-fast/2.0.3:
     resolution: {integrity: sha512-W/BKtbL+dUjTuRL2vziuYhp76s5HZ9qQhd/dKfWIZveD0O40453QNyZhC0e63lqZrAQ4jiOapVoeJ7JrszenQQ==}
@@ -3583,7 +3620,7 @@ packages:
     resolution: {integrity: sha512-JZkJMZkAGFFPP2YqXZXPbMlMBgsxzE8ILs4lMIX/2o0L9UBw9O/Y3o6wFw/i9YLapcUJWwqbi3kdxIPdC62TIA==}
     hasBin: true
     dependencies:
-      glob: 7.1.6
+      glob: 7.2.0
     dev: true
 
   /rollup/2.67.0:
@@ -3630,7 +3667,6 @@ packages:
     dependencies:
       loose-envify: 1.4.0
       object-assign: 4.1.1
-    dev: true
 
   /semver/5.7.1:
     resolution: {integrity: sha512-sauaDf/PZdVgrLTNYHRtpXa1iRiKcaebiKQ1BJdpQlWH2lCvexQdX55snPFyK7QzpudqbCI0qXFfOasHdyNDGQ==}
