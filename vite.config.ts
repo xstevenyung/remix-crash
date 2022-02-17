@@ -12,9 +12,9 @@ export default defineConfig(({ mode }) => {
         : {},
     build: {
       emptyOutDir: false,
-      outDir: "dist/server",
+      outDir: "dist/client",
       lib: {
-        entry: path.resolve(__dirname, "src/server/index.ts"),
+        entry: path.resolve(__dirname, "src/client/index.ts"),
         name: "RemixCrash",
         fileName: (format) => `remix-crash.${format}.js`,
       },
@@ -27,7 +27,7 @@ export default defineConfig(({ mode }) => {
           "remix",
           "source-map",
           "fs/promises",
-          "node-fetch",
+          "axios",
         ],
         output: {
           // Provide global variables to use in the UMD build
@@ -38,7 +38,7 @@ export default defineConfig(({ mode }) => {
             remix: "Remix",
             "source-map": "SourceMap",
             "fs/promises": "FSPromises",
-            "node-fetch": "NodeFetch",
+            axios: "Axios",
           },
         },
       },

@@ -2,7 +2,7 @@ import { ActionFunction, LoaderFunction, json } from "remix";
 import { SourceMapConsumer } from "source-map";
 import { CORSResponse } from "./utils";
 import { readFile } from "fs/promises";
-// import fetch from "node-fetch";
+import axios from "axios";
 
 export const loader: LoaderFunction = () => {
   if (process.env.NODE_ENV !== "development") {
@@ -17,9 +17,9 @@ export const action: ActionFunction = async ({ request }) => {
     throw new Response(null, { status: 404 });
   }
 
-  // fetch("https://jsonplaceholder.typicode.com/todos/1")
-  //   .then((response) => response.json())
-  //   .then((json) => console.log(json));
+  axios("https://jsonplaceholder.typicode.com/todos/1")
+    .then((response) => response.data)
+    .then((data) => console.log(data));
 
   const url = new URL(request.url);
   const root = process.cwd();
