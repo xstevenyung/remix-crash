@@ -1,6 +1,8 @@
 import { ActionFunction, LoaderFunction, json } from "remix";
 import { SourceMapConsumer } from "source-map";
 import { CORSResponse } from "./utils";
+import { readFile } from "fs/promises";
+// import fetch from "node-fetch";
 
 export const loader: LoaderFunction = () => {
   if (process.env.NODE_ENV !== "development") {
@@ -15,7 +17,9 @@ export const action: ActionFunction = async ({ request }) => {
     throw new Response(null, { status: 404 });
   }
 
-  const { readFile } = await import("fs/promises");
+  // fetch("https://jsonplaceholder.typicode.com/todos/1")
+  //   .then((response) => response.json())
+  //   .then((json) => console.log(json));
 
   const url = new URL(request.url);
   const root = process.cwd();

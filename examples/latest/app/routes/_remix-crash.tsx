@@ -1,1 +1,1 @@
-export { loader, action } from "remix-crash";
+export { loader, action } from "remix-crash/server";

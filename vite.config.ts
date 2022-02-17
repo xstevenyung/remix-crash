@@ -12,15 +12,23 @@ export default defineConfig(({ mode }) => {
         : {},
     build: {
       emptyOutDir: false,
+      outDir: "dist/server",
       lib: {
-        entry: path.resolve(__dirname, "src/index.ts"),
+        entry: path.resolve(__dirname, "src/server/index.ts"),
         name: "RemixCrash",
         fileName: (format) => `remix-crash.${format}.js`,
       },
       rollupOptions: {
         // make sure to externalize deps that shouldn't be bundled
         // into your library
-        external: ["react", "react-dom", "remix", "source-map", "fs/promises"],
+        external: [
+          "react",
+          "react-dom",
+          "remix",
+          "source-map",
+          "fs/promises",
+          "node-fetch",
+        ],
         output: {
           // Provide global variables to use in the UMD build
           // for externalized deps
@@ -30,6 +38,7 @@ export default defineConfig(({ mode }) => {
             remix: "Remix",
             "source-map": "SourceMap",
             "fs/promises": "FSPromises",
+            "node-fetch": "NodeFetch",
           },
         },
       },

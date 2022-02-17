@@ -18,5 +18,5 @@
     "outDir": "dist",
     "emitDeclarationOnly": true
   },
-  "include": ["./src/index.ts", "./src/vite-env.d.ts"]
+  "include": ["src/client/index.ts", "src/server/index.ts", "src/vite-env.d.ts"]
 }
