@@ -1,14 +1,20 @@
-import type { LoaderFunction } from "remix";
+import { json, LoaderFunction, useLoaderData } from "remix";
+import { format } from "date-fns";
+
+type LoaderData = { now: Date };
 
 export const loader: LoaderFunction = () => {
-  hello.remix();
-  return null;
+  const data: LoaderData = { now: new Date() };
+
+  return json(data);
 };
 
 export default function Index() {
+  const { now } = useLoaderData<LoaderData>();
+
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
-      <h1>Welcome to Remix</h1>
+      <h1>Welcome to Remix ({format(now, "dd")})</h1>
       <ul>
         <li>
           <a
