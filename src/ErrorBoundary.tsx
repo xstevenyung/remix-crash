@@ -9,9 +9,8 @@ import {
 } from "react";
 import { Links, LiveReload, Meta, Scripts, ScrollRestoration } from "remix";
 import codeStyles from "highlight.js/styles/github-dark.css";
-// @ts-ignore
-import styleInject from "style-inject";
 import styles from "./index.css";
+import hljs from "highlight.js";
 
 export type Stacktrace = Array<string>;
 
@@ -193,11 +192,6 @@ export function ProdErrorBoundary({ error }: { error: Error }) {
 }
 
 export function DevErrorBoundary({ error }: { error: Error }) {
-  useLayoutEffect(() => {
-    styleInject(styles);
-    styleInject(codeStyles);
-  }, []);
-
   const [firstLine, ...stacktrace] = useMemo(() => {
     if (!error.stack) return [];
     return error.stack.split("\n");
@@ -223,6 +217,8 @@ export function DevErrorBoundary({ error }: { error: Error }) {
           href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
           rel="stylesheet"
         />
+        <style>{styles}</style>
+        <style>{codeStyles}</style>
       </head>
 
       <body
@@ -304,13 +300,8 @@ export const StackTraceLine: FunctionComponent<{ index: number }> = ({
   );
 };
 
-// import Prism from 'prismjs'
-// import Highlight from 'react-highlight'
-import hljs from "highlight.js";
-
 const CodeFrame = () => {
   const { convertedStacktrace, selectedIndex } = useError();
-  // const selectedLine = useRef(null)
 
   const convertedStacktraceLine =
     selectedIndex !== null ? convertedStacktrace[selectedIndex] : null;

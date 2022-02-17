@@ -45,7 +45,6 @@
   },
   "dependencies": {
     "highlight.js": "^11.4.0",
-    "source-map": "^0.7.3",
-    "style-inject": "^0.3.0"
+    "source-map": "^0.7.3"
   }
 }
