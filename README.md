@@ -36,7 +36,7 @@ export { ErrorBoundary } from "remix-crash";
 #### In `app/routes/_remix-crash.jsx`
 
 ```jsx
-export { loader, action } from "remix-crash";
+export { loader, action } from "remix-crash/server";
 ```
 
 #### All set
