@@ -4,6 +4,49 @@ import { CORSResponse } from "./utils";
 import { readFile } from "fs/promises";
 import axios from "axios";
 
+async function getFileContent(pathOrURL: string): Promise<string> {
+  const isRemote = new RegExp(/^http(s)?:\/\//).test(pathOrURL);
+
+  if (isRemote) {
+    return axios.get(pathOrURL).then((response) => response.data);
+  }
+
+  return readFile(pathOrURL, { encoding: "utf-8" });
+}
+
+async function extractSourceMap(data: string, pathOrURL: string) {
+  let sourceMapResult;
+
+  sourceMapResult = new RegExp(
+    /\n\/\/\# sourceMappingURL\=data\:application\/json\;base64\,(.*)/,
+    "g"
+  ).exec(data);
+
+  if (sourceMapResult?.length) {
+    const [_, base64SourceMap] = sourceMapResult;
+
+    return JSON.parse(Buffer.from(base64SourceMap, "base64").toString("utf-8"));
+  }
+
+  sourceMapResult = new RegExp(
+    /\/\/\# sourceMappingURL\=(\/(.*)\.map)/,
+    "g"
+  ).exec(data);
+
+  if (sourceMapResult?.length) {
+    const bundledFileURL = new URL(pathOrURL);
+    const [_, sourceMapPath] = sourceMapResult;
+
+    const rawSourceMap = await axios
+      .get(sourceMapPath, { baseURL: bundledFileURL.origin })
+      .then((response) => response.data);
+
+    return rawSourceMap;
+  }
+
+  return null;
+}
+
 export const loader: LoaderFunction = () => {
   if (process.env.NODE_ENV !== "development") {
     throw new Response(null, { status: 404 });
@@ -17,10 +60,6 @@ export const action: ActionFunction = async ({ request }) => {
     throw new Response(null, { status: 404 });
   }
 
-  axios("https://jsonplaceholder.typicode.com/todos/1")
-    .then((response) => response.data)
-    .then((data) => console.log(data));
-
   const url = new URL(request.url);
   const root = process.cwd();
 
@@ -32,14 +71,11 @@ export const action: ActionFunction = async ({ request }) => {
     throw new Response(null, { status: 422 });
   }
 
-  const data = await readFile(bundledFile, { encoding: "utf-8" });
+  const data = await getFileContent(bundledFile);
 
-  const sourceMapResult = new RegExp(
-    /\n\/\/\# sourceMappingURL\=data\:application\/json\;base64\,(.*)/,
-    "g"
-  ).exec(data);
+  const rawSourceMap = await extractSourceMap(data, bundledFile);
 
-  if (!sourceMapResult) {
+  if (!rawSourceMap) {
     return json({
       root,
       file: bundledFile.replace(root, ""),
@@ -48,12 +84,6 @@ export const action: ActionFunction = async ({ request }) => {
       column: column ? parseInt(column) : null,
     });
   }
-
-  const [_, base64SourceMap] = sourceMapResult;
-
-  const rawSourceMap = JSON.parse(
-    Buffer.from(base64SourceMap, "base64").toString("utf-8")
-  );
 
   const consumer = await new SourceMapConsumer(rawSourceMap);
 
