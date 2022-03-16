@@ -258,7 +258,7 @@ const StacktraceList = () => {
   if (loading) return null;
 
   return (
-    <ul className="h-screen max-h-screen overflow-y-scroll">
+    <ul className="h-screen max-h-screen">
       {stacktrace.map((line, index) => {
         return (
           <StackTraceLine key={index} index={index}>
