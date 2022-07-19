@@ -1,3 +1,5 @@
+> ⚠️ DEPRECATED due to a lack of time, Remix Crash is deprecated.
+
 # Remix Crash
 
 A root development `<ErrorBoundary />` for your Remix apps.
